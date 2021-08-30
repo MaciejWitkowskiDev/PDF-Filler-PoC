@@ -4,7 +4,7 @@ class InvalidMappingException(Exception):
 class FieldMapper:
 
     def __generateDict__(values : dict, mapping : dict):
-        ret = dict()
+        ret : dict = dict()
         for field, key in mapping.items():
             ret[field] = values[key]
         return ret 
