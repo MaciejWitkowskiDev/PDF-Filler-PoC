@@ -3,21 +3,21 @@ class InvalidMappingException(Exception):
 
 class FieldMapper:
 
-    def __generateDict__(values : dict, mapping : dict):
+    def __generateDict__(self, values : dict, mapping : dict):
         ret : dict = dict()
         for field, key in mapping.items():
             ret[field] = values[key]
         return ret 
 
-    def __verifyMapping__(values : dict, mapping : dict):
+    def __verifyMapping__(self, values : dict, mapping : dict):
         for key in values.keys():
-            if key not in mapping.keys():
+            if not(key in list(mapping.values())):
                 raise InvalidMappingException(f"Invalid mapping provided: value of {key} not mapped.")
         return True
 
     def __init__(self, values : dict, mapping : dict):
-        if self.__verifyMapping__(mapping, values):
-            self.__valuedict = self.__generateDict__(values, mapping)
+        if self.__verifyMapping__(values, mapping):
+            self.valuedict = self.__generateDict__(values, mapping)
     
-    def getMapping(self):
-        return self.__valuedict
+    def getValues(self):
+        return self.valuedict
