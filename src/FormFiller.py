@@ -7,6 +7,8 @@ class FormFiller:
 
     def __fill_pdf__(input_pdf_filestream, data_dict):
         template_pdf = pdfrw.PdfReader(input_pdf_filestream)
+        pdf_writer = pdfrw.PdfWriter()
+        filled_pdf_filestream : bytes = BytesIO()
         for page in template_pdf.pages:
             annotations = page[ANNOT_KEY]
             if annotations:
@@ -24,12 +26,16 @@ class FormFiller:
                                         pdfrw.PdfDict(V='{}'.format(data_dict[key]))
                                     )
                                     annotation.update(pdfrw.PdfDict(AP=''))
-        return template_pdf
+        pdf_writer.addpages(template_pdf.pages)
+        pdf_writer.write(filled_pdf_filestream)
+        return filled_pdf_filestream
 
     def fillForm(self,mapper : FieldMapper):
         value_mapping = mapper.getValues()
-        filled_pdf : pdfrw.PdfReader = self.__fill_pdf__(self.filesteam, value_mapping)
-        
+        self.filestream : bytes  = self.__fill_pdf__(self.filesteam, value_mapping)
+
+    def getFilestream(self):
+        return self.filestream
 
     def __init__(self, filestream : bytes):
-        self.filesteam : bytes = filestream
+        self.filestream : bytes = filestream
