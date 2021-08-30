@@ -5,9 +5,8 @@ from io import BytesIO
 from FieldMapper import FieldMapper
 class FormFiller:
 
-    def __fill_pdf__(input_pdf_filestream, data_dict):
+    def __fill_pdf__(self,input_pdf_filestream, data_dict):
         template_pdf = pdfrw.PdfReader(input_pdf_filestream)
-        pdf_writer = pdfrw.PdfWriter()
         filled_pdf_filestream : bytes = BytesIO()
         for page in template_pdf.pages:
             annotations = page[ANNOT_KEY]
@@ -26,13 +25,12 @@ class FormFiller:
                                         pdfrw.PdfDict(V='{}'.format(data_dict[key]))
                                     )
                                     annotation.update(pdfrw.PdfDict(AP=''))
-        pdf_writer.addpages(template_pdf.pages)
-        pdf_writer.write(filled_pdf_filestream)
+        pdfrw.PdfWriter().write(filled_pdf_filestream, template_pdf)
         return filled_pdf_filestream
 
     def fillForm(self,mapper : FieldMapper):
         value_mapping = mapper.getValues()
-        self.filestream : bytes  = self.__fill_pdf__(self.filesteam, value_mapping)
+        self.filestream : bytes  = self.__fill_pdf__(self.filestream, value_mapping)
 
     def getFilestream(self):
         return self.filestream
