@@ -21,6 +21,8 @@ class PdfGenerator:
         if form in self.getMapping().keys():
             with open(f"{form}.pdf", "rb") as pdf_template:
                 filestream = BytesIO(pdf_template.read()) 
+                if len(values) == 0:
+                    return filestream
                 mapper = FieldMapper(values, self.getMapping()[form])
                 filler = FormFiller(filestream)
                 filler.fillForm(mapper)
