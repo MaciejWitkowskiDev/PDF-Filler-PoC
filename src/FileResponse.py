@@ -32,8 +32,8 @@ class FileResponse:
     def getResponse(self):
         return json.dumps(
             {
-                "status" : self.getStatus(),
+                "status" : self.getStatus().value,
                 "message" : self.getMessage(),
-                "response_body" : self.getResponse()
+                "response_body" : self.getBody()
             }
         )

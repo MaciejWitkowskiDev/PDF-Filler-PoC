@@ -20,7 +20,7 @@ class PdfGenerator:
     def generatePdf(self, form : str, values: dict):
         if form in self.getMapping().keys():
             with open(f"{form}.pdf", "rb") as pdf_template:
-                filestream = BytesIO(pdf_template.read())            
+                filestream = BytesIO(pdf_template.read()) 
                 mapper = FieldMapper(values, self.getMapping()[form])
                 filler = FormFiller(filestream)
                 filler.fillForm(mapper)
