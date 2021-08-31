@@ -3,8 +3,8 @@ from FormFiller import FormFiller
 from FieldMapper import FieldMapper
 
 def main():
-    file = open("test.pdf", 'rb')
-    filestream = BytesIO(file.read())
+    with open("test.pdf", "rb") as f:
+        filestream = BytesIO(f.read())
     values = {
         'nip' : '1172204485',
         'urzad': 'Urząd skarbowy Łódź Widzew'
