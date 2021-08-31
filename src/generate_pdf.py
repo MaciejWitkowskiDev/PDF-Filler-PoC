@@ -35,7 +35,8 @@ def main():
     response.setStatus(Status.OK)
     response.setMessage("")
     response.setBody(response_filestream.read().decode('latin-1'))
-    return response.getBody()
+    return response.getResponse()
 
+print(main())
 with open("output.pdf", "wb") as f:
     f.write(main().encode('latin-1'))
