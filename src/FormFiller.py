@@ -1,6 +1,6 @@
 # For more flexibility, the FormFiller constructor takes in an already read byte array of the  pdf file, NOT a python File object!
 import pdfrw
-from CONSTS import *
+from env import *
 from io import BytesIO
 from FieldMapper import FieldMapper
 class FormFiller:
