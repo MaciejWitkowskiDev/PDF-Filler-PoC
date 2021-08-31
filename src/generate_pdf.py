@@ -34,8 +34,8 @@ def main():
     response_filestream.seek(0)
     response.setStatus(Status.OK)
     response.setMessage("")
-    response.setBody(response_filestream.read().decode('utf-8'))
-    return response.getResponse()
+    response.setBody(response_filestream.read().decode('latin-1'))
+    return response.getBody()
 
-
-print(main())
+with open("output.pdf", "wb") as f:
+    f.write(main().encode('latin-1'))

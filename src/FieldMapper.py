@@ -6,6 +6,8 @@ class FieldMapper:
     def __generateDict__(self, values : dict, mapping : dict):
         ret : dict = dict()
         for field, key in mapping.items():
+            if not(key in values.keys()):
+                continue
             ret[field] = values[key]
         return ret 
 
