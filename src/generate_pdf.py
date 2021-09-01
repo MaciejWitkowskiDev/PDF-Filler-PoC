@@ -43,9 +43,5 @@ def main():
         response.setMessage(str(err))
         response.setBody("")
         return response.getResponse()
-        
-
-
-    
 
 print(main())
