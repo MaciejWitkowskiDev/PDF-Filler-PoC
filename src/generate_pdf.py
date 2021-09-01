@@ -1,4 +1,3 @@
-
 #This is going to be our main dispatch.
 #Usage:
 # $ python generate_pdf.py formname key1:value1 key2:value2 ... keyn:valuen
@@ -9,12 +8,11 @@ from PdfGenerator import PdfGenerator
 from FileResponse import FileResponse
 from FileResponse import Status
 from sys import argv
-from re import L, match
+from re import match
 
 class InvalidKeyException(Exception):
     pass
 
-#pairs never empty in this context
 def generate_values(pairs : list):
     values = dict()
     for pair in pairs:
@@ -36,7 +34,5 @@ def main():
     response.setMessage("")
     response.setBody(response_filestream.read().decode('latin-1'))
     print(response.getResponse())
-    return response.getBody()
 
-with open("output.pdf", "wb") as f:
-    f.write(main().encode('latin-1'))
+main()
