@@ -25,7 +25,6 @@ function generatePdf($form, $fields){
 generatePdf("pit-example", array(
     'nip' => '122222',
     'urzad' => rawurlencode('Test case'),
-    'xD' => 'xD'
 ));
 
 exit;
