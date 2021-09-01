@@ -28,15 +28,24 @@ def generate_values(pairs : list):
 
 def main():
     response = FileResponse()
-    values : dict = generate_values(argv[2:])
-    pdf_generator = PdfGenerator()
-    response_filestream = pdf_generator.generatePdf(argv[1], values)
-    response_filestream.seek(0)
-    pdf_bytes = response_filestream.read()
-    response.setStatus(Status.OK)
-    response.setMessage("")
-    response.setBody(b64encode(pdf_bytes).decode('latin1'))
+    try:
+        values : dict = generate_values(argv[2:])
+        pdf_generator = PdfGenerator()
+        response_filestream = pdf_generator.generatePdf(argv[1], values)
+        response_filestream.seek(0)
+        pdf_bytes = response_filestream.read()
+        response.setStatus(Status.OK)
+        response.setMessage("")
+        response.setBody(b64encode(pdf_bytes).decode('latin1'))
+        return response.getResponse()
+    except Exception as err:
+        response.setStatus(Status.ERROR)
+        response.setMessage(str(err))
+        response.setBody("")
+        return response.getResponse()
+        
 
-    return response.getResponse()
+
+    
 
 print(main())
