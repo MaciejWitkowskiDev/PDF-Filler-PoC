@@ -8,7 +8,8 @@ from PdfGenerator import PdfGenerator
 from FileResponse import FileResponse
 from FileResponse import Status
 from sys import argv
-import base64
+from base64 import b64encode
+from urllib.parse import unquote
 from re import match
 
 class InvalidKeyException(Exception):
@@ -19,7 +20,7 @@ def generate_values(pairs : list):
     for pair in pairs:
         if match("\w+:\w+", pair):
             pair = pair.split(":")
-            values[pair[0]] = pair[1]
+            values[unquote(pair[0])] = unquote(pair[1])
         else:
             raise InvalidKeyException(f"Passed an invalid key:value pair to the pdf generation script: {pair}")
     return values
@@ -32,10 +33,9 @@ def main():
     response_filestream = pdf_generator.generatePdf(argv[1], values)
     response_filestream.seek(0)
     pdf_bytes = response_filestream.read()
-
     response.setStatus(Status.OK)
     response.setMessage("")
-    response.setBody(base64.b64encode(pdf_bytes).decode('latin1'))
+    response.setBody(b64encode(pdf_bytes).decode('latin1'))
 
     return response.getResponse()
 
