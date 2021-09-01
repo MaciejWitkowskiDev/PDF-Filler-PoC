@@ -8,6 +8,7 @@ from PdfGenerator import PdfGenerator
 from FileResponse import FileResponse
 from FileResponse import Status
 from sys import argv
+import base64
 from re import match
 
 class InvalidKeyException(Exception):
@@ -30,9 +31,12 @@ def main():
     pdf_generator = PdfGenerator()
     response_filestream = pdf_generator.generatePdf(argv[1], values)
     response_filestream.seek(0)
+    pdf_bytes = response_filestream.read()
+
     response.setStatus(Status.OK)
     response.setMessage("")
-    response.setBody(response_filestream.read().decode('latin-1'))
-    print(response.getResponse())
+    response.setBody(base64.b64encode(pdf_bytes).decode('latin1'))
 
-main()
+    return response.getResponse()
+
+print(main())
