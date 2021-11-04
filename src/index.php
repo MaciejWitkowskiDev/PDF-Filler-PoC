@@ -22,9 +22,11 @@ function generatePdf($form, $fields){
     }
 }
 
-generatePdf("pit-example", array(
-    'nip' => '122222',
-    'urzad' => rawurlencode('Test case'),
+generatePdf("PIT-37", array(
+    'rok' => '2021',
+    'krs' => '989898989898',
+    'cel' => rawurlencode('PXTest00001'),
+    'agreement' => 'True'
 ));
 
 exit;
