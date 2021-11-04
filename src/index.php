@@ -12,7 +12,6 @@ function generatePdf($form, $fields){
     $response = json_decode($output, true);
     if($response["status"] == 1){
         http_response_code(404);
-        // echo $response["message"];
         error_log("Python PDF generator error. Returned message: ".$response["message"]);
         die();
     } else {
