@@ -25,6 +25,7 @@ class FormFiller:
                                         pdfrw.PdfDict(V='{}'.format(data_dict[key]))
                                     )
                                     annotation.update(pdfrw.PdfDict(AP=''))
+                                    annotation.update(pdfrw.PdfDict(Ff=1))
         pdfrw.PdfWriter().write(filled_pdf_filestream, template_pdf)
         return filled_pdf_filestream
 
