@@ -16,10 +16,9 @@ class FormFiller:
                         if annotation[ANNOT_FIELD_KEY]:
                             key = annotation[ANNOT_FIELD_KEY][1:-1]
                             if key in data_dict.keys():
-                                if type(data_dict[key]) == bool:
-                                    if data_dict[key] == True:
-                                        annotation.update(pdfrw.PdfDict(
-                                            AS=pdfrw.PdfName('Yes')))
+                                if data_dict[key] == 'True':
+                                    annotation.update(pdfrw.PdfDict(
+                                        AS=pdfrw.PdfName('Yes')))
                                 else:
                                     annotation.update(
                                         pdfrw.PdfDict(V='{}'.format(data_dict[key]))

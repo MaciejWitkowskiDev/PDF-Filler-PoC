@@ -25,7 +25,7 @@ generatePdf("PIT-37", array(
     'rok' => '2021',
     'krs' => '989898989898',
     'cel' => rawurlencode('PXTest00001'),
-    'agreement' => 'True'
+    'agreement' => True
 ));
 
 exit;
