@@ -1,6 +1,69 @@
 {
-    "pit-example" : {
-        "p_1" : "nip",
-        "p_6" : "urzad"
+    "PIT-37" : {
+        "p_5" : "rok",
+        "p_136": "krs",
+        "p_138": "cel",
+        "p_139": "agreement"
+    },
+    "PIT-37-L" : {
+        "p_5" : "rok",
+        "p_136": "krs",
+        "p_138": "cel",
+        "p_139": "agreement"
+    },
+    "PIT-28" : {
+        "p_4" : "rok",
+        "p_214": "krs",
+        "p_216": "cel",
+        "p_217": "agreement"
+    },
+    "PIT-28-L" : {
+        "p_4" : "rok",
+        "p_214": "krs",
+        "p_216": "cel",
+        "p_217": "agreement"
+    },
+    "PIT-36" : {
+        "p_5" : "rok",
+        "p_498": "krs",
+        "p_500": "cel",
+        "p_501": "agreement"
+    },
+    "PIT-36-L" : {
+        "p_5" : "rok",
+        "p_498": "krs",
+        "p_500": "cel",
+        "p_501": "agreement"
+    },
+    "PIT-36L" : {
+        "p_4" : "rok",
+        "p_163": "krs",
+        "p_165": "cel",
+        "p_166": "agreement"
+    },
+    "PIT-36L-L" : {
+        "p_4" : "rok",
+        "p_163": "krs",
+        "p_165": "cel",
+        "p_166": "agreement"
+    },
+    "PIT-38" : {
+        "p_4" : "rok",
+        "p_64": "krs",
+        "p_66": "cel",
+        "p_67": "agreement"
+    },
+    "PIT-38-L" : {
+        "p_4" : "rok",
+        "p_64": "krs",
+        "p_66": "cel",
+        "p_67": "agreement"
+    },
+    "PIT-39" : {
+        "p_4" : "rok",
+        "p_48": "krs",
+        "p_50": "cel",
+        "p_51": "agreement"
     }
+
 }
