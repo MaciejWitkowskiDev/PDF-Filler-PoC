@@ -16,15 +16,16 @@ class FormFiller:
                         if annotation[ANNOT_FIELD_KEY]:
                             key = annotation[ANNOT_FIELD_KEY][1:-1]
                             if key in data_dict.keys():
-                                if data_dict[key] == 'True':
-                                    annotation.update(pdfrw.PdfDict(
-                                        AS=pdfrw.PdfName('Yes')))
+                                if data_dict[key] == 'Tak':
+                                    annotation.update( pdfrw.PdfDict( V=pdfrw.PdfName(data_dict[key]) , AS=pdfrw.PdfName(data_dict[key])))
+                                    annotation.update(pdfrw.PdfDict(Ff=1))
                                 else:
                                     annotation.update(
                                         pdfrw.PdfDict(V='{}'.format(data_dict[key]))
                                     )
                                     annotation.update(pdfrw.PdfDict(AP=''))
                                     annotation.update(pdfrw.PdfDict(Ff=1))
+        template_pdf.Root.AcroForm.update(pdfrw.PdfDict(NeedAppearances=pdfrw.PdfObject('true')))
         pdfrw.PdfWriter().write(filled_pdf_filestream, template_pdf)
         return filled_pdf_filestream
 
