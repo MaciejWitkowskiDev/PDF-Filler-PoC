@@ -1,0 +1,47 @@
+
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+from __future__ import unicode_literals
+import pdfrw
+from env import *
+from io import BytesIO
+from FieldMapper import FieldMapper
+
+
+class FormFiller(object):
+
+    def __fill_pdf__(self, input_pdf_filestream, data_dict):
+        template_pdf = pdfrw.PdfReader(input_pdf_filestream)
+        filled_pdf_filestream = BytesIO()
+        for page in template_pdf.pages:
+            annotations = page[ANNOT_KEY]
+            if annotations:
+                for annotation in annotations:
+                    if (annotation[SUBTYPE_KEY] == WIDGET_SUBTYPE_KEY):
+                        if annotation[ANNOT_FIELD_KEY]:
+                            key = annotation[ANNOT_FIELD_KEY][1:(- 1)]
+                            if (key in data_dict.keys()):
+                                if (data_dict[key] == u'Tak'):
+                                    annotation.update(pdfrw.PdfDict(V=pdfrw.PdfName(
+                                        data_dict[key]), AS=pdfrw.PdfName(data_dict[key])))
+                                    annotation.update(pdfrw.PdfDict(Ff=1))
+                                else:
+                                    annotation.update(pdfrw.PdfDict(
+                                        V=u'{}'.format(data_dict[key])))
+                                    annotation.update(pdfrw.PdfDict(AP=u''))
+                                    annotation.update(pdfrw.PdfDict(Ff=1))
+        template_pdf.Root.AcroForm.update(pdfrw.PdfDict(
+            NeedAppearances=pdfrw.PdfObject(u'true')))
+        pdfrw.PdfWriter().write(filled_pdf_filestream, template_pdf)
+        return filled_pdf_filestream
+
+    def fillForm(self, mapper):
+        value_mapping = mapper.getValues()
+        self.filestream = self.__fill_pdf__(self.filestream, value_mapping)
+
+    def getFilestream(self):
+        return self.filestream
+
+    def __init__(self, filestream):
+        self.filestream = filestream
