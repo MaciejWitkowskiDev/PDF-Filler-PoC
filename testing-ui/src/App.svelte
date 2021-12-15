@@ -5,7 +5,7 @@
 	let krs = "9898989898";
 	let cel = "PxTest2021";
 	let url = `https://px-website-test-01.pitax.pl/system-2020/pdfgenerator/generate.php`
-	
+
 </script>
 
 <form>
@@ -70,7 +70,7 @@
 </form><br><br>
 
 
-{#if (file == "PIT-37" || file == "PIT-28" || file == "PIT-36" || file == "PIT-36L" || file == "PIT-38" || file == "PIT-39" || file == "PIT-OP") }
+{#if (file == "PIT-37" || file == "PIT-28" || file == "PIT-36" || file == "PIT-36L" || file == "PIT-38" || file == "PIT-39" || file == "PIT-OP" || file == "PIT-37-L" || file == "PIT-28-L" || file == "PIT-36-L" || file == "PIT-36L-L" || file == "PIT-38-L" || file == "PIT-39-L" || file == "PIT-OP-L") }
 	<a href="{url}?file={file}&year={year}&krs={krs}&cel={cel}">{url}?file={file}&year={year}&krs={krs}&cel={encodeURIComponent(cel)}</a>
 {:else}
 	<a href="{url}?file={file}&year={year}">{url}?file={file}&year={year}</a>
