@@ -15,6 +15,7 @@ class FormFiller:
                     if annotation[SUBTYPE_KEY] == WIDGET_SUBTYPE_KEY:
                         if annotation[ANNOT_FIELD_KEY]:
                             key = annotation[ANNOT_FIELD_KEY][1:-1]
+                            annotation.update(pdfrw.PdfDict(V=pdfrw.PdfName('')))
                             if key in data_dict.keys():
                                 if data_dict[key] == 'Tak':
                                     annotation.update( pdfrw.PdfDict( V=pdfrw.PdfName(data_dict[key]) , AS=pdfrw.PdfName(data_dict[key])))

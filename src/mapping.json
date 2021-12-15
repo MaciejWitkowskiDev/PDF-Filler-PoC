@@ -64,6 +64,131 @@
         "p_48": "krs",
         "p_50": "cel",
         "p_51": "agreement"
-    }
-
+    },
+    "PIT-39-L" : {
+        "p_4" : "rok",
+        "p_48": "krs",
+        "p_50": "cel",
+        "p_51": "agreement"
+    },
+    "PIT-OP" : {
+        "p_4" : "rok",
+        "p_9": "krs",
+        "p_10": "cel",
+        "p_11": "agreement"
+    },
+    "PIT-OP-L" : {
+        "p_4" : "rok",
+        "p_9": "krs",
+        "p_10": "cel",
+        "p_11": "agreement"
+    },
+    "PIT-WZR" : {
+        "p_2" : "rok"
+    },
+    "PIT-WZR-L" : {
+        "p_2" : "rok"
+    },
+    "PIT-WZ" : {
+        "p_2" : "rok"
+    },
+    "PIT-WZ-L" : {
+        "p_2" : "rok"
+    },
+    "PIT-D" : {
+        "p_3" : "rok"
+    },
+    "PIT-D-L" : {
+        "p_3" : "rok"
+    },
+    "PIT-28B" : {
+        "p_2" : "rok"
+    },
+    "PIT-28B-L" : {
+        "p_2" : "rok"
+    },
+    "PIT-IP" : {
+        "p_2" : "rok"
+   },
+    "PIT-IP-L" : {
+        "p_2" : "rok"
+    },
+    "PIT-NZ" : {
+        "p_4" : "miesiac",
+        "p_5" : "rok"
+    },
+    "PIT-NZ-L" : {
+        "p_4" : "miesiac",
+        "p_5" : "rok"
+    },
+    "PIT-PM" : {
+        "p_4" : "rok"
+    },
+    "PIT-PM-L" : {
+       "p_4" : "rok"
+    },
+    "PIT-ZG" : {
+      "p_2" : "rok"
+    },
+    "PIT-ZG-L" : {
+        "p_2" : "rok"
+    },
+    "PIT-MIT" : {
+        "p_4" : "rok"
+    },
+    "PIT-MIT-L" : {
+        "p_4" : "rok"
+    },
+    "PIT-B" : {
+        "p_2" : "rok"
+    },
+    "PIT-B-L" : {
+        "p_2" : "rok"
+    },
+    "PIT-NZI" : {
+        "p_4" : "rok"
+    },
+    "PIT-NZI-L" : {
+        "p_4" : "rok"
+    },
+    "PIT-M" : {
+        "p_2" : "rok"
+    },
+    "PIT-M-L" : {
+        "p_2" : "rok"
+   },
+   "PIT-DS" : {
+       "p_2" : "rok"
+  },
+    "PIT-DS-L" : {
+        "p_2" : "rok"
+    },
+    "PIT-2K" : {
+    },
+    "PIT-2K-L" : {
+   },
+   "PIT-BR" : {
+       "p_4" : "rok"
+  },
+    "PIT-BR-L" : {
+        "p_4" : "rok"
+   },
+   "PIT-Z" : {
+       "p_2" : "rok"
+  },
+    "PIT-Z-L" : {
+        "p_2" : "rok"
+   },
+   "PIT-O" : {
+       "p_3" : "rok"
+  },
+    "PIT-O-L" : {
+        "p_3" : "rok"
+   },
+    "PIT-SE" : {
+        "p_2" : "rok"
+   },
+    "PIT-SE-L" : {
+        "p_2" : "rok"
+   }
 }
