@@ -2,7 +2,7 @@
 #Usage:
 # $ python generate_pdf.py formname key1:value1 key2:value2 ... keyn:valuen
 # Example:
-# $ python generate_pdf.py pit-example rok:2021 krs:0000012345 
+# $ python generate_pdf.py pit-example rok:2021 krs:0000012345
 
 from PdfGenerator import PdfGenerator
 from FileResponse import FileResponse

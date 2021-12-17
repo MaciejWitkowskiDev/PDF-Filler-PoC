@@ -9,7 +9,7 @@ class FieldMapper:
             if not(key in values.keys()):
                 continue
             ret[field] = values[key]
-        return ret 
+        return ret
 
     def __verifyMapping__(self, values : dict, mapping : dict):
         for key in values.keys():
@@ -20,6 +20,6 @@ class FieldMapper:
     def __init__(self, values : dict, mapping : dict):
         if self.__verifyMapping__(values, mapping):
             self.valuedict = self.__generateDict__(values, mapping)
-    
+
     def getValues(self):
         return self.valuedict

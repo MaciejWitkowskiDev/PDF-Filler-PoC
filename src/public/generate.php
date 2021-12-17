@@ -3,8 +3,9 @@
 include_once('Logger.php');
 
 function generatePdf($form, $fields){
+    $path = "/opt/pdf-generator/generate_pdf.py";
     $form = escapeshellcmd($form);
-    $command_string = "python generate_pdf.py ".$form." ";
+    $command_string = "python3 $path ".$form." ";
     foreach ($fields as $key => $value) {
         $key = escapeshellcmd($key);
         $value = escapeshellcmd($value);
@@ -31,7 +32,7 @@ function generatePdf($form, $fields){
 
 function main(){
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $file = $_POST["file"]; 
+        $file = $_POST["file"];
         if(isset($_POST["year"])) {
             $year = $_POST["year"];
         }
@@ -41,9 +42,9 @@ function main(){
         if(isset($_POST["cel"])) {
             $cel = $_POST["cel"];
         }
-        
+
     } else  {
-        $file = $_GET["file"]; 
+        $file = $_GET["file"];
         if(isset($_GET["year"])) {
             $year = $_GET["year"];
         }
@@ -54,7 +55,7 @@ function main(){
             $cel = $_GET["cel"];
         }
     }
-    
+
     try {
         if(isset($cel) && isset($krs)){
             generatePdf($file, array(
@@ -82,9 +83,9 @@ function main(){
         error_log("COULDNT GENERATE FILE: generate.php error. Received exception:".$e);
         die('Coś poszło nie tak! Prosimy spróbować ponownie później.');
     }
-    
-    flush(); // This is essential for large downloads 
+
+    flush(); // This is essential for large downloads
 }
 
 main();
-?> 
+?>

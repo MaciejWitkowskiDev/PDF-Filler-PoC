@@ -8,6 +8,7 @@ class Logger
      * @var string
      */
     protected static $log_file;
+    protected static $generator_logs_path = '/opt/pdf-generator';
 
     /**
      * $file - file
@@ -34,17 +35,17 @@ class Logger
     public static function createLogFile()
     {
         $time = date(static::$options['dateFormat']);
-        static::$log_file =  __DIR__ . "/logs/log-{$time}.txt";
+        static::$log_file =  static::$generator_logs_path . "/logs/log-{$time}.txt";
 
 
         //Check if directory /logs exists
-        if (!file_exists(__DIR__ . '/logs')) {
-            mkdir(__DIR__ . '/logs', 0777, true);
+        if (!file_exists($generator_logs_path . '/logs')) {
+            mkdir(static::$generator_logs_path . '/logs', 0775, true);
         }
 
         //Create log file if it doesn't exist.
         if (!file_exists(static::$log_file)) {
-            fopen(static::$log_file, 'w') or exit("Can't create {static::log_file}!");
+            fopen(static::$log_file, 'w') or exit("Can't create static::log_file ");
         }
 
         //Check permissions of file.
@@ -57,7 +58,7 @@ class Logger
     /**
      * Set logging options (optional)
      * @param array $options Array of settable options
-     * 
+     *
      * Options:
      *  [
      *      'dateFormat' => 'value of the date format the .txt file should be saved int'
@@ -71,9 +72,9 @@ class Logger
 
     /**
      * Info method (write info message)
-     * 
+     *
      * Used for e.g.: "The user example123 has created a post".
-     * 
+     *
      * @param string $message Descriptive text of the debug
      * @param string $context Array to expend the message's meaning
      * @return void
@@ -94,9 +95,9 @@ class Logger
 
     /**
      * Notice method (write notice message)
-     * 
+     *
      * Used for e.g.: "The user example123 has created a post".
-     * 
+     *
      * @param string $message Descriptive text of the debug
      * @param string $context Array to expend the message's meaning
      * @return void
@@ -117,9 +118,9 @@ class Logger
 
     /**
      * Debug method (write debug message)
-     * 
+     *
      * Used for debugging, could be used instead of echo'ing values
-     * 
+     *
      * @param string $message Descriptive text of the debug
      * @param string $context Array to expend the message's meaning
      * @return void
@@ -141,9 +142,9 @@ class Logger
 
     /**
      * Warning method (write warning message)
-     * 
+     *
      * Used for warnings which is not fatal to the current operation
-     * 
+     *
      * @param string $message Descriptive text of the warning
      * @param string $context Array to expend the message's meaning
      * @return void
@@ -164,9 +165,9 @@ class Logger
 
     /**
      * Error method (write error message)
-     * 
+     *
      * Used for e.g. file not found,...
-     * 
+     *
      * @param string $message Descriptive text of the error
      * @param string $context Array to expend the message's meaning
      * @return void
@@ -187,9 +188,9 @@ class Logger
 
     /**
      * Fatal method (write fatal message)
-     * 
+     *
      * Used for e.g. database unavailable, system shutdown
-     * 
+     *
      * @param string $message Descriptive text of the error
      * @param string $context Array to expend the message's meaning
      * @return void
@@ -278,11 +279,11 @@ class Logger
 
     /**
      * Convert absolute path to relative url (using UNIX directory seperators)
-     * 
+     *
      * E.g.:
      *      Input:      D:\development\htdocs\public\todo-list\index.php
      *      Output:     localhost/todo-list/index.php
-     * 
+     *
      * @param string Absolute directory/path of file which should be converted to a relative (url) path
      * @return string Relative path
      */
